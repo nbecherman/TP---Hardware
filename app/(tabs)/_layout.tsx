@@ -62,6 +62,18 @@ export default function TabLayout() {
         ),
       }}
     />
+
+    
+<Tabs.Screen
+      name="tiempo"
+      options={{
+        title: 'Tiempo',
+        tabBarIcon: ({ color, focused }) => (
+          <TabBarIcon name={focused ? 'add-circle' : 'add-circle-outline'} color={color} />
+        ),
+      }}
+    />
+
     </Tabs>
   );
 }
