@@ -53,6 +53,15 @@ export default function TabLayout() {
       }}
     />
 
+<Tabs.Screen
+      name="contactos"
+      options={{
+        title: 'Contactos',
+        tabBarIcon: ({ color, focused }) => (
+          <TabBarIcon name={focused ? 'add-circle' : 'add-circle-outline'} color={color} />
+        ),
+      }}
+    />
     </Tabs>
   );
 }

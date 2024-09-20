@@ -7,28 +7,37 @@ const AboutScreen = () => {
   const [scanned, setScanned] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [scanData, setScanData] = useState('');
+  const [hasPermission, setHasPermission] = useState<boolean | null>(null);
 
   // Datos de los integrantes
   const teamMembers = "Reifut y Becherman";
   const qrValue = JSON.stringify({ members: teamMembers });
 
+  // Función para manejar el escaneo del QR
   const handleBarCodeScanned = ({ type, data }: { type: string; data: string }) => {
     setScanned(true);
-    // Procesar los datos escaneados
+
+    // Verifica los datos escaneados
+    console.log("Datos escaneados:", data);  // Imprime los datos escaneados
+
     try {
-      const parsedData = JSON.parse(data);
+      const parsedData = JSON.parse(data);  // Intenta parsear el QR como JSON
+
       if (parsedData.members) {
         Alert.alert("Integrantes de la aplicación:", parsedData.members);
       } else {
-        Alert.alert("Error", "No se pudo leer el código QR.");
+        Alert.alert("Error", "El código QR no contiene información de los integrantes.");
       }
     } catch (error) {
-      Alert.alert("Error", "Formato de QR no válido.");
+      Alert.alert("Error", "Formato de QR no válido.");  // Si no es JSON válido
+      console.error("Error al intentar parsear el código QR:", error);
     }
   };
 
+  // Solicita permisos de cámara
   const requestCameraPermission = async () => {
     const { status } = await BarCodeScanner.requestPermissionsAsync();
+    setHasPermission(status === 'granted');
     if (status !== 'granted') {
       Alert.alert('Permiso de cámara requerido');
     }
@@ -37,6 +46,14 @@ const AboutScreen = () => {
   useEffect(() => {
     requestCameraPermission();
   }, []);
+
+  // Muestra un mensaje si no tiene permisos de cámara
+  if (hasPermission === null) {
+    return <Text>Solicitando permisos de cámara...</Text>;
+  }
+  if (hasPermission === false) {
+    return <Text>No se han concedido permisos de cámara.</Text>;
+  }
 
   return (
     <View style={styles.container}>
