@@ -41,7 +41,18 @@ export default function TabLayout() {
           <TabBarIcon name={focused ? 'add-circle' : 'add-circle-outline'} color={color} />
         ),
       }}
+
     />
+        <Tabs.Screen
+      name="about"
+      options={{
+        title: 'Acerca de',
+        tabBarIcon: ({ color, focused }) => (
+          <TabBarIcon name={focused ? 'add-circle' : 'add-circle-outline'} color={color} />
+        ),
+      }}
+    />
+
     </Tabs>
   );
 }
