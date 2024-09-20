@@ -32,6 +32,16 @@ export default function TabLayout() {
           ),
         }}
       />
+
+    <Tabs.Screen
+      name="añadir"
+      options={{
+        title: 'Añadir',
+        tabBarIcon: ({ color, focused }) => (
+          <TabBarIcon name={focused ? 'add-circle' : 'add-circle-outline'} color={color} />
+        ),
+      }}
+    />
     </Tabs>
   );
 }
