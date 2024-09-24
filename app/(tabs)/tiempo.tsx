@@ -26,9 +26,11 @@ const WeatherScreen = () => {
 
         // Obtener el clima actual
         const { latitude, longitude } = currentLocation.coords;
-        const apiKey = 'TU_API_KEY'; // Reemplaza con tu clave de API
+        console.log(latitude, longitude );
+        
+        const apiKey = '4435206ecfdb5416974d8a9f3d5f1d2c'; // Reemplaza con tu clave de API
         const response = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`
         );
 
         setTemperature(response.data.main.temp);
