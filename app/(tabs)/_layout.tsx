@@ -28,51 +28,49 @@ export default function TabLayout() {
         options={{
           title: 'Explore',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon name={focused ? 'compass' : 'compass-outline'} color={color} />
           ),
         }}
       />
 
-    <Tabs.Screen
-      name="añadir"
-      options={{
-        title: 'Añadir',
-        tabBarIcon: ({ color, focused }) => (
-          <TabBarIcon name={focused ? 'add-circle' : 'add-circle-outline'} color={color} />
-        ),
-      }}
+      <Tabs.Screen
+        name="añadir"
+        options={{
+          title: 'Añadir',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'add-circle' : 'add-circle-outline'} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="about"
+        options={{
+          title: 'Acerca de',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'information-circle' : 'information-circle-outline'} color={color} />
+          ),
+        }}
+      />
 
-    />
-        <Tabs.Screen
-      name="about"
-      options={{
-        title: 'Acerca de',
-        tabBarIcon: ({ color, focused }) => (
-          <TabBarIcon name={focused ? 'add-circle' : 'add-circle-outline'} color={color} />
-        ),
-      }}
-    />
+      <Tabs.Screen
+        name="contactos"
+        options={{
+          title: 'Contactos',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'people' : 'people-outline'} color={color} />
+          ),
+        }}
+      />
 
-<Tabs.Screen
-      name="contactos"
-      options={{
-        title: 'Contactos',
-        tabBarIcon: ({ color, focused }) => (
-          <TabBarIcon name={focused ? 'add-circle' : 'add-circle-outline'} color={color} />
-        ),
-      }}
-    />
-
-    
-<Tabs.Screen
-      name="tiempo"
-      options={{
-        title: 'Tiempo',
-        tabBarIcon: ({ color, focused }) => (
-          <TabBarIcon name={focused ? 'add-circle' : 'add-circle-outline'} color={color} />
-        ),
-      }}
-    />
+      <Tabs.Screen
+        name="tiempo"
+        options={{
+          title: 'Tiempo',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'time' : 'time-outline'} color={color} />
+          ),
+        }}
+      />
 
     </Tabs>
   );

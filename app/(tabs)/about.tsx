@@ -6,7 +6,6 @@ import QRCode from 'react-native-qrcode-svg';
 const AboutScreen = () => {
   const [scanned, setScanned] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-  const [scanData, setScanData] = useState('');
   const [hasPermission, setHasPermission] = useState<boolean | null>(null);
 
   // Datos de los integrantes

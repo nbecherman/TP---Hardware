@@ -46,8 +46,14 @@ export default function ContactsScreen() {
   }, []);
 
   const renderItem = ({ item }: { item: Contacts.Contact }) => {
-    const isEmergencyContact = item.phoneNumbers?.some(phone => phone.number === emergencyPhoneNumber) ?? false;
-
+    const normalizeNumber = (number: string) => {
+      return number.replace(/[^0-9]/g, '');  // Elimina todo excepto números
+    };
+  
+    const isEmergencyContact = item.phoneNumbers?.some(phone => 
+      phone.number && normalizeNumber(phone.number) === normalizeNumber(emergencyPhoneNumber || '')
+    ) ?? false;
+  
     return (
       <View style={styles.contactItem}>
         <View style={styles.contactInfo}>
@@ -60,7 +66,7 @@ export default function ContactsScreen() {
       </View>
     );
   };
-
+  
   if (loading) {
     return (
       <View style={styles.loader}>
